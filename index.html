@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Numbers</title>
+    <style>
+      img {
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body style="background-color: #c8c2bc">
+    <h1 style="text-align: center; color: red; font-family: sans-serif">
+      Image to be displayed here :
+    </h1>
+    <div style="height: 120px" id="disp"></div>
+    <br />
+    <div style="text-align: center">
+      <input type="text" />
+    </div>
+
+    <script type="text/javascript">
+      count = 1;
+      var array = [];
+      document
+        .querySelector("input")
+        .addEventListener("keypress", function (event) {
+          val = parseInt(event.key);
+          // console.log(val);
+
+          t = setInterval(displayNumbers, 1000);
+        });
+      function displayNumbers() {
+        var p = document.getElementById("disp");
+        if (array.length > val) {
+          p.removeChild(p.childNodes[array.length - 1]); //removing child from last
+          array.pop();
+          count--;
+        } else if (count < 10) {
+          var c = document.createElement("IMG");
+          c.src = "./images/fig-" + count + ".jpeg";
+          c.height = "100";
+          c.width = "100";
+          array.push(count);
+          p.appendChild(c); //adding child
+          count++;
+        }
+
+        if (count == val + 1) {
+          clearInterval(t);
+        }
+      }
+    </script>
+  </body>
+</html>
